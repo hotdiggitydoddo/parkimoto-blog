@@ -30,9 +30,67 @@
     <!--STYLES-->
     
     <!--STYLES END-->
+    <!--SCRIPTS-->
+    <script src="/linker/js/socket.io.js"></script>
+    <script src="/linker/js/sails.io.js"></script>
+    <script src="/linker/js/app.js"></script>
+    <script src="/linker/js/jquery-1.10.2.js"></script>
+    <!--SCRIPTS END-->
+
   </head>
 
   <body>
+    <% if (!req.session.admin) { %>
+          <button id="loginButton" class="btn btn-xs">Login</button>
+    <% } else { %>
+          <label>Welcome, <%-req.session.username%>!</label>
+          <button id="logoutButton" class="btn btn-xs">Logout</button>
+          <button id="composeButton" class="btn btn-xs">Compose</button>
+    <% } %>
+    
+    <form id="loginForm" style="display: none">
+      <div class="form-group">
+        <input id="usernameInput" type="text" class="form-control" placeholder="Username">
+      </div>
+      <div class="form-group">
+        <input id="passwordInput" type="password" class="form-control" placeholder="Password">
+      </div>
+      <div class="form-group">
+        <button id="loginSubmitButton" class="btn btn-xs">Submit</button>
+      </div>
+    </form>
+
+    <script type="text/javascript">
+      $("#loginButton").click(function() {
+        $("#loginForm").show("fade");
+      });
+
+      $("#logoutButton").click(function() {
+        $.post(
+          '/logout',
+          function() { window.location = '/'; }
+        ).fail(function(res) {
+            alert("Error: " + res.getResponseHeader("error"));
+        });
+      });
+
+      $("#loginForm").submit(function(event){
+        event.preventDefault();
+        var username = $("#usernameInput").val();
+        var password = $("#passwordInput").val();
+        if (username && password) {
+          $.post(
+            '/login',
+            {username: username, password: password},
+            function() { window.location = '/'; }
+          ).fail(function(res) {
+            alert("Error: " + res.getResponseHeader("error"));
+          });
+        } else {
+            alert("A username and password is required");
+        }
+      });
+    </script>
     <%- body %>
 
 
@@ -85,10 +143,6 @@
 
     -->
 
-    <!--SCRIPTS-->
-    <script src="/linker/js/socket.io.js"></script>
-    <script src="/linker/js/sails.io.js"></script>
-    <script src="/linker/js/app.js"></script>
-    <!--SCRIPTS END-->
+   
   </body>
 </html>

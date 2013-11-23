@@ -28,12 +28,14 @@
     -->
 
     <!--STYLES-->
-    
+    <link rel="stylesheet" href="/linker/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/linker/styles/custom.css">
     <!--STYLES END-->
     <!--SCRIPTS-->
     <script src="/linker/js/socket.io.js"></script>
     <script src="/linker/js/sails.io.js"></script>
     <script src="/linker/js/app.js"></script>
+    <script src="/linker/js/bootstrap.min.js"></script>
     <script src="/linker/js/jquery-1.10.2.js"></script>
     <!--SCRIPTS END-->
 
@@ -91,9 +93,13 @@
         }
       });
     </script>
+    <div class="container">
+      
     <%- body %>
+<%- partial('sidebar') %>
+    
 
-
+</div>
 
     <!--
         Client-side Templates

@@ -54,14 +54,20 @@ div.rotate_right {
 	transform:rotate(-8deg);
 }
 
+.shadowy {
+	border: solid #ccc 1px;
+	border-radius: 3px;
+	box-shadow: 0px 2px 10px #666;
+	-webkit-box-shadow: 0px 2px 10px #666;
+}
 .content {
 	border: solid #ccc 1px;
-	width: 80%;
+	width: 85%;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 2em;
 	border-radius: 3px;
-	-moz-box-shadow: 0px 2px 10px #666;
+	box-shadow: 0px 2px 10px #666;
 	-webkit-box-shadow: 0px 2px 10px #666;
 	background-color: white;
 	padding-left: 10px;
@@ -72,11 +78,18 @@ div.rotate_right {
 }
 
 body {
-	background-color: #dfd9c2;
+	//background-color: #dfd9c2;
+	background-image: url('/images/lisabg.png');
+	background-repeat: repeat;
 	color: #666;
 	font-family: 'writeSong', Verdana, sans-serif;
 	margin: 0px;
 	padding: 0px;
+}
+
+p {
+	font-size: 16pt;
+	letter-spacing: 2px;
 }
 
 .well.sidebar-nav {
@@ -84,4 +97,12 @@ body {
 	position: fixed;
 	margin-left: 20px;
 	margin-top: 2em;
+}
+
+.sticky {
+	position: fixed;
+}
+
+.btn {
+	font-size: 150%;
 }

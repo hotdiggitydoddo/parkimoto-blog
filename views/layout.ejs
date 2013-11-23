@@ -43,7 +43,9 @@
 
   <body>
     <% if (!req.session.admin) { %>
-          <button id="loginButton" class="btn btn-xs">Login</button>
+          <a href="#"><img src="/images/heart.png" class="pull-right" width="20" height="20"></a>
+          
+          
     <% } else { %>
           <label>Welcome, <%-req.session.username%>!</label>
           <button id="logoutButton" class="btn btn-xs">Logout</button>
@@ -94,9 +96,9 @@
       });
     </script>
     <div class="container">
+<%- partial('sidebar') %>
       
     <%- body %>
-<%- partial('sidebar') %>
     
 
 </div>

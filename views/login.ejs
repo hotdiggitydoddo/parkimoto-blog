@@ -1,0 +1,36 @@
+<div class="container" style="padding-top: 50px;">
+<div class="content form-signin" style="background-color: #62CDDE;">
+	<h3 style="color: black; font-weight: bolder; letter-spacing: 3px">Login</h3>
+		<form id="loginForm">
+			<div class="form-group">
+				<label for="usernameInput">Username</label>
+				<input type="text" class="form-control" style="margin-left: auto; margin-right: auto;" id="usernameInput" placeholder="Username">
+			</div>
+			<div class="form-group">
+				<label for="passwordInput">Password</label>
+				<input type="password" class="form-control" style="margin-left: auto; margin-right: auto;" id="passwordInput" placeholder="Password">
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-large" style="letter-spacing: 2px;">Login</button>
+			</div>
+		</form>	
+	</div>
+</div>
+<script type="text/javascript">
+	  $("#loginForm").submit(function(event){
+        event.preventDefault();
+        var username = $("#usernameInput").val();
+        var password = $("#passwordInput").val();
+        if (username && password) {
+          $.post(
+            '/login',
+            {username: username, password: password},
+            function() { window.location = '/'; }
+          ).fail(function(res) {
+            alert("Error: " + res.getResponseHeader("error"));
+          });
+        } else {
+            alert("A username and password is required");
+        }
+      });
+</script>

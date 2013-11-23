@@ -36,10 +36,11 @@ module.exports.routes = {
     view: 'home/index'
   },
 
-  '/login': {
-    controller: 'session',
-    action: 'login'
+  'get /login': {
+    view: 'login'
   },
+
+  'post /login': 'SessionController.login',
 
   '/logout': {
     controller: 'session',

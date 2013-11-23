@@ -4,7 +4,7 @@ module.exports = {
 	login: function(req, res, next) {
 		var username = req.param('username');
 		var password = req.param('password');
-
+		console.log("inlogin");
 		if (username) {
 			if (username == 'create-admin') {
 				var hasher = require('password-hash');

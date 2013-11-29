@@ -38,7 +38,18 @@
     <script src="/linker/js/bootstrap.min.js"></script>
     <script src="/linker/js/jquery-1.10.2.js"></script>
     <!--SCRIPTS END-->
-
+    <link rel="stylesheet" href="/redactor/redactor.css" />
+<script src="/redactor/redactor.js"></script>
+<script type="text/javascript">
+    $(document).ready(
+      function()
+      {
+        $('#redactor_content').redactor({
+            imageUpload: '/fileupload'
+        });
+      }
+    );
+    </script>
   </head>
 
   <body>
@@ -47,7 +58,9 @@
           
           
     <% } else { %>
+           <a href="/blog/new"><img src="/images/pencil.png" class="pull-right" width="20" height="20"></a>
            <a href="/logout"><img src="/images/x.png" class="pull-right" width="20" height="20"></a>
+
     <% } %>
     
     

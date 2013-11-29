@@ -45,6 +45,33 @@ module.exports.routes = {
   '/logout': {
     controller: 'session',
     action: 'logout'
+  },
+
+  '/fileupload': {
+    controller: 'session',
+    action: 'upload'
+  },
+
+  '/blog': 'PostController',
+
+  '/blog/new': {
+    controller: 'Post',
+    action: 'new'
+  },
+
+  '/blog/update': {
+    controller: 'Post',
+    action: 'update'
+  },
+
+  '/blog/edit': {
+    controller: 'Post',
+    action: 'edit'
+  },
+
+  '/blog/delete': {
+    controller: 'Post',
+    action: 'delete'
   }
 
   /*

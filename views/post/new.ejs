@@ -1,0 +1,96 @@
+<div class="container">
+<div class="content form-signin pull-right" style="max-width: 85%; padding-top: 20px;">
+	<form id="newPostForm">
+	<div class="form-group">
+		<label for="titleInput">Title</label>
+		<input type="text" class="form-control" id="titleInput" value="<%-post.title%>">
+	</div>
+	<div class="form-group">
+		<label for="redactor_content">Content</label>
+		<textarea class="form-control" rows="10" id="redactor_content"><%-post.content%></textarea>
+	</div>
+		<input type="hidden" value="<%-post.id%>" id="postId"/>
+	
+		<button id="createPostButton" type="submit" class="btn btn-success">Create</button>
+
+</form>
+</div>
+	
+</div>
+
+<script type="text/javascript">
+	document.getElementById('titleInput').focus();
+	$("#createPostButton").click(function() {
+		event.preventDefault();
+		var title = $("#titleInput").val();
+		var content = $("#redactor_content").val();				
+		var id = $("#postId").val();
+
+		if (title && content) {
+			if (id == "" ) {
+				$.post(
+					'/post/create',
+					{title: title, content: content},
+					function() {
+						window.location = "/blog";
+					}
+				).fail(function(res) {
+					alert("Error: " + res.getResponseHeader("error"));
+				});	
+			} else {
+				console.log(id);
+				$.post(
+					'/post/edit',
+					{title: title, content: content, id: id},
+					function() {
+						window.location = "/blog";
+					}
+				).fail(function(res) {
+					alert("Error: " + res.getResponseHeader("error"));
+				});
+			}
+		} else {
+			alert("Error:  Please complete all fields")
+		}
+	});
+</script> 
+
+<script type='text/javascript'>
+/*
+function main()
+{
+    var inputFileToLoad = document.createElement("input");
+    inputFileToLoad.type = "file";
+    inputFileToLoad.id = "inputFileToLoad";
+    document.body.appendChild(inputFileToLoad);
+
+    var buttonLoadFile = document.createElement("button");
+    buttonLoadFile.onclick = loadImageFileAsURL;
+    buttonLoadFile.textContent = "Load Selected File";
+    document.body.appendChild(buttonLoadFile);
+}
+
+function loadImageFileAsURL()
+{
+    var filesSelected = document.getElementById("inputFileToLoad").files;
+    if (filesSelected.length > 0)
+    {
+        var fileToLoad = filesSelected[0];
+
+        if (fileToLoad.type.match("image.*"))
+        {
+            var fileReader = new FileReader();
+            fileReader.onload = function(fileLoadedEvent) 
+            {
+                var imageLoaded = document.createElement("img");
+                imageLoaded.src = fileLoadedEvent.target.result;
+                document.body.appendChild(imageLoaded);
+                //$("#contentInput").append(imageLoaded);
+            };
+            fileReader.readAsDataURL(fileToLoad);
+        }
+    }
+}
+
+main(); */
+</script>

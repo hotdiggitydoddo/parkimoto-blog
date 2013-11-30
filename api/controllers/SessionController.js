@@ -14,6 +14,7 @@ module.exports = {
 						console.log(err);
 					} else if (admin) {
 						req.session.admin = true;
+						req.session.authenticated = true;
 						req.session.username = 'Admin';
 						return res.redirect('/');
 					}
@@ -27,6 +28,7 @@ module.exports = {
 						if (hasher.verify(password, admin.password)) {
 							req.session.admin = true;
 							req.session.username = admin.username;
+							req.session.authenticated = true;
 							return res.redirect('/');
 						} else {
 							res.set('error', 'Password is incorrect.');

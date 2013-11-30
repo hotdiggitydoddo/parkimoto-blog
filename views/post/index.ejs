@@ -5,8 +5,8 @@
 			<h4 style="color:#2BB6ED; font-style: italic"><%-post.createdAt %></h4> 
 			<p><%- post.content %></p>
 			<% if (req.session.admin) { %>
-					<a href="/blog/update?id=<%-post.id%>">edit</a>
-					<a href="/blog/delete?id=<%-post.id%>">delete</a>
+					<a href="/posts/update?id=<%-post.id%>">edit</a>
+					<a href="/posts/delete?id=<%-post.id%>">delete</a>
 			<%} %>
 		</div>
 		<br />

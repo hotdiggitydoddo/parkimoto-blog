@@ -47,32 +47,7 @@ module.exports.routes = {
     action: 'logout'
   },
 
-  '/fileupload': {
-    controller: 'session',
-    action: 'upload'
-  },
-
-  '/blog': 'PostController',
-
-  '/blog/new': {
-    controller: 'Post',
-    action: 'new'
-  },
-
-  '/blog/update': {
-    controller: 'Post',
-    action: 'update'
-  },
-
-  '/blog/edit': {
-    controller: 'Post',
-    action: 'edit'
-  },
-
-  '/blog/delete': {
-    controller: 'Post',
-    action: 'delete'
-  }
+  
 
   /*
   // But what if you want your home page to display

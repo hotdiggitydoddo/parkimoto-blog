@@ -52,7 +52,9 @@ module.exports = {
         res.set('error', 'DB Error');
         res.send(500, { error: 'DB Error'});
       } else {
-        res.redirect('/blog');
+        res.send({thepost: post});
+        
+        //res.redirect('/photos/create', {thepost: post});
       }
     });
   },
@@ -68,7 +70,7 @@ module.exports = {
 
       if (post) {
         req.session.post = post;
-        res.redirect('/blog/new');
+        res.redirect('/posts/new');
       };
 
     });
@@ -92,7 +94,7 @@ module.exports = {
         });
       }
     });
-    res.redirect('/blog');
+    res.redirect('/posts');
   },
 
   delete: function(req, res) {
@@ -102,7 +104,7 @@ module.exports = {
         //record is gone.
       });
     });
-    res.redirect('/blog');
+    res.redirect('/posts');
   },
   /**
    * Overrides for the settings in `config/controllers.js`

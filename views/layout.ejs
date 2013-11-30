@@ -31,25 +31,18 @@
     <link rel="stylesheet" href="/linker/styles/bootstrap.min.css">
     <link rel="stylesheet" href="/linker/styles/custom.css">
     <!--STYLES END-->
+    <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+<link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
     <!--SCRIPTS-->
     <script src="/linker/js/socket.io.js"></script>
     <script src="/linker/js/sails.io.js"></script>
     <script src="/linker/js/app.js"></script>
-    <script src="/linker/js/bootstrap.min.js"></script>
     <script src="/linker/js/jquery-1.10.2.js"></script>
+    <script src="/linker/js/bootstrap.min.js"></script>
     <!--SCRIPTS END-->
     <link rel="stylesheet" href="/redactor/redactor.css" />
-<script src="/redactor/redactor.js"></script>
-<script type="text/javascript">
-    $(document).ready(
-      function()
-      {
-        $('#redactor_content').redactor({
-            imageUpload: '/fileupload'
-        });
-      }
-    );
-    </script>
+    <script src="/redactor/redactor.js"></script>
+    
   </head>
 
   <body>
@@ -58,7 +51,7 @@
           
           
     <% } else { %>
-           <a href="/blog/new"><img src="/images/pencil.png" class="pull-right" width="20" height="20"></a>
+           <a href="/posts/new"><img src="/images/pencil.png" class="pull-right" width="20" height="20"></a>
            <a href="/logout"><img src="/images/x.png" class="pull-right" width="20" height="20"></a>
 
     <% } %>

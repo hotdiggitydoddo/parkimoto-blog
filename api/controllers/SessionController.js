@@ -51,22 +51,7 @@ module.exports = {
 		res.redirect('/');
 	},
 
-	upload: function(req, res) {
-		console.log(req.files);
-		console.log("filename " + req.files.file.path);
-		var fs = require('fs');
-
-		fs.readFile(req.files.file.path, function(err, data) {
-			if (err) {
-				console.log("readfile" + err);
-			}
-				fs.writeFileSync('assets/images/' + req.files.file.name, data);
-				res.send( { filelink: '/images/' + req.files.file.name } );
-			
-		});
-		
-	},
-
+	
   /**
    * Overrides for the settings in `config/controllers.js`
    * (specific to SessionController)

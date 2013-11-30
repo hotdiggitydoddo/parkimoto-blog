@@ -42,4 +42,6 @@ nbproject
 ########################
 config/local.js
 
-assets/images/photos
+assets/images/photos/*.jpg
+assets/images/photos/*.png
+

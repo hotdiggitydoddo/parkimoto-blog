@@ -35,5 +35,16 @@ module.exports.adapters = {
     // so you don't inadvertently push it up if you're using version control
     password: 'YOUR_MYSQL_PASSWORD', 
     database: 'YOUR_MYSQL_DB'
+  },
+
+  herokuPostgresqlDB: {
+    module: 'sails-postgresql',
+    database: 'd2qt5vgnll6eun',
+    host: 'ec2-23-21-94-137.compute-1.amazonaws.com',
+    user: 'ygcvljwjugxuvj',
+    password: 'iurIx7R1b-iQNI7b4GzOFXa_Ic',
+    port: 5432
   }
+
+
 };

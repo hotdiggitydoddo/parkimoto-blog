@@ -102,6 +102,21 @@ module.exports = {
     Post.findOne(id).done(function(err, post) {
       post.destroy(function(err) {
         //record is gone.
+        Photo.findByPostId(id).done(function(err, photos) {
+          var fs = require('fs');
+
+          photos.forEach(function(photo) {
+            fs.unlink("assets/" + photo.filename, function(err) {
+              if (err) {
+                console.log(err);
+              }
+            });
+          
+            photo.destroy(function(err) {
+              //record is gone.
+            });
+          });
+        });
       });
     });
     res.redirect('/posts');

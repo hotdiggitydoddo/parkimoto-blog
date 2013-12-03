@@ -34,9 +34,21 @@
 					'/posts/create',
 					{title: title, content: content},
 					function(res) {
+						id = res.thepost.id;
 						alert(res.thepost.id);
 					}
 				);
+
+				if (photos.length > 0) {
+					$.post(
+						'/photos/create',
+						{postId: id, photos: photos},
+						function(res) {
+							alert("photos added!");
+						}
+					);
+				}
+
 			}
 				// $.post(
 				// 	'/posts/create',

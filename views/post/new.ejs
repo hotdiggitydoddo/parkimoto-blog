@@ -48,19 +48,19 @@
 						)};
 						window.location = "/posts";
 					}
-					
-			} else {
-				console.log(id);
-				$.post(
-					'/posts/edit',
-					{title: title, content: content, id: id},
-					function() {
-						window.location = "/posts";
-					}
-				).fail(function(res) {
-					alert("Error: " + res.getResponseHeader("error"));
-				});
-			}
+
+				 else {
+					console.log(id);
+					$.post(
+						'/posts/edit',
+						{title: title, content: content, id: id},
+						function() {
+							window.location = "/posts";
+						}
+					).fail(function(res) {
+						alert("Error: " + res.getResponseHeader("error"));
+					});
+				}
 		} else {
 			alert("Error:  Please complete all fields")
 		}

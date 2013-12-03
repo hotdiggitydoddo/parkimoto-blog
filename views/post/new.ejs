@@ -19,6 +19,21 @@
 </div>
 
 <script type="text/javascript">
+	$(document).ready(function() {
+		$('#redactor_content').redactor({
+			imageUpload: '/photos/upload',
+
+			imageUploadCallback: function(image, json) {
+				photos[photos.length] = json.filelink;
+				console.log("photo in callback: " + image);
+				
+			}
+		});
+	});
+
+
+
+
 	var photos = new Array();
 
 	document.getElementById('titleInput').focus();
@@ -69,17 +84,7 @@
 		}
 	});
 	
-	$(document).ready(function() {
-		$('#redactor_content').redactor({
-			imageUpload: '/photos/upload',
-
-			imageUploadCallback: function(image, json) {
-				photos[photos.length] = json.filelink;
-				console.log("photo in callback: " + image);
-				
-			}
-		});
-	});
+	
 </script> 
 
 

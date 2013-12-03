@@ -29,25 +29,35 @@
 		var id = $("#postId").val();
 
 		if (title && content) {
-			if (id == "" ) {
+			if (id == "" ) { 
 				$.post(
 					'/posts/create',
 					{title: title, content: content},
 					function(res) {
-						console.log("Post created?");
-						id = res.thepost.id;
-					});
-						
-					if (photos.length > 0) {
-						$.post(
-							'/photos/create',
-							{postId: id, photos: photos},
-							function(res) {
-								console.log("photos added to album!");
-							}	
-						)};
-						window.location = "/posts";
+						alert(res.thepost.id);
 					}
+				);
+			}
+				// $.post(
+				// 	'/posts/create',
+				// 	{title: title, content: content},
+				// 	function(res) {
+				// 		alert("Post created?");
+				// 		id = res.thepost.id;
+				// 	}).done(function(res) {
+				// 		alert("Done!");
+				// 	});
+						
+				// 	if (photos.length > 0) {
+				// 		$.post(
+				// 			'/photos/create',
+				// 			{postId: id, photos: photos},
+				// 			function(res) {
+				// 				console.log("photos added to album!");
+				// 			}	
+				// 		)};
+				// 		window.location = "/posts";
+				// 	}
 
 				 else {
 					console.log(id);

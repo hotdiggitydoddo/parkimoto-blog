@@ -35,25 +35,21 @@
 					{title: title, content: content},
 					function(res) {
 						//console.log(res.thepost.id);
-						id = res.thepost.id;
 						
-					}
-				).fail(function(res) {
-					alert("Error: " + res.getResponseHeader("error"));
-				});
-				if (photos.length > 0) {
+						if (photos.length > 0) {
 							$.post(
 								'/photos/create',
 								{postId: res.thepost.id, photos: photos},
 								function(res) {
 									console.log("photos added to album!");
 								}
-							).fail(function(res) {
-								alert("Error: " + res.getResponseHeader("error"));
-							});
-				}
+							)
+						}
 						window.location = "/posts";
-					
+					}
+				).fail(function(res) {
+					alert("Error: " + res.getResponseHeader("error"));
+				});	
 			} else {
 				console.log(id);
 				$.post(
@@ -75,7 +71,6 @@
 			imageUpload: '/photos/upload',
 
 			imageUploadCallback: function(image, json) {
-				console.log("photo callback!");
 				photos[photos.length] = json.filelink;
 				
 			}

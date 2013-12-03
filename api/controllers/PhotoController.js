@@ -2,14 +2,18 @@ module.exports = {
 	upload: function(req, res) {
 		var fs = require('fs');
 
-		fs.readFile(req.files.file.path, function(err, data) {
-			fs.writeFile('assets/images/photos/' + req.files.file.name, data, function(err) {
-				if (err) {
-					console.log(err);
-				};
-			});
-			res.send( { filelink: '/images/photos/' + req.files.file.name } );
-		});
+		var data = fs.readFileSync(req.files.file.path);
+		fs.writeFileSync('assets/images/photos' + req.files.file.name, data);
+		res.send( { filelink: '/images/photos/' + req.files.file.name } );
+
+		// fs.readFile(req.files.file.path, function(err, data) {
+		// 	fs.writeFile('assets/images/photos/' + req.files.file.name, data, function(err) {
+		// 		if (err) {
+		// 			console.log(err);
+		// 		};
+		// 	});
+		// 	res.send( { filelink: '/images/photos/' + req.files.file.name } );
+		// });
 	},
 
 	create: function(req, res) {

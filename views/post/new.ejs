@@ -36,10 +36,9 @@
 					function(res) {
 						id = res.thepost.id;
 						alert(res.thepost.id);
-					}
-				);
 
-				if (photos.length > 0) {
+
+						if (photos.length > 0) {
 					$.post(
 						'/photos/create',
 						{postId: id, photos: photos},
@@ -48,6 +47,10 @@
 						}
 					);
 				}
+					}
+				);
+
+
 
 			}
 				// $.post(

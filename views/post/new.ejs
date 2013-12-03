@@ -71,6 +71,7 @@
 			imageUpload: '/photos/upload',
 
 			imageUploadCallback: function(image, json) {
+				console.log("photo callback!");
 				photos[photos.length] = json.filelink;
 				
 			}

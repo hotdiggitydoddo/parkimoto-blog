@@ -5,6 +5,7 @@ module.exports = {
 		var data = fs.readFileSync(req.files.file.path);
 		console.log(data);
 		var newdata = fs.writeFileSync('assets/images/photos' + req.files.file.name, data);
+		console.log(newdata);
 		res.send( { filelink: '/images/photos/' + req.files.file.name } );
 
 		// fs.readFile(req.files.file.path, function(err, data) {

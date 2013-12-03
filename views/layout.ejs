@@ -42,6 +42,19 @@
     <!--SCRIPTS END-->
     <link rel="stylesheet" href="/redactor/redactor.css" />
     <script src="/redactor/redactor.js"></script>
+    <script type="text/javascript">
+$(document).ready(function() {
+    $('#redactor_content').redactor({
+      imageUpload: '/photos/upload',
+
+      imageUploadCallback: function(image, json) {
+        photos[photos.length] = json.filelink;
+        console.log("photo in callback: " + image);
+        
+      }
+    });
+  });
+    </script>
     
   </head>
 
@@ -72,7 +85,7 @@
         });
       });
     </script>
-    <div class="container" style="max-width: 90%;">
+    <div class="container">
     <%- partial('sidebar') %>
     <%- body %>
 </div>

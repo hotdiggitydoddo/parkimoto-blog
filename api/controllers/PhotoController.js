@@ -1,8 +1,5 @@
 module.exports = {
 	upload: function(req, res) {
-		console.log(req.files);
-		console.log("filename " + req.files.file.path);
-		console.log(req);
 		var fs = require('fs');
 
 		fs.readFile(req.files.file.path, function(err, data) {
@@ -18,7 +15,7 @@ module.exports = {
 	create: function(req, res) {
 		var id = req.body.postId;
 		var photos = req.body.photos;
-
+		console.log("photos:  " + photos);
 		photos.forEach(function(photo) {
 			Photo.create( {postId: id, filename: photo} ).done(function(err, p) {
 				if (err) {

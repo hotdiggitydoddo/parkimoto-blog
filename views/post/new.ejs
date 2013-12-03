@@ -27,6 +27,7 @@
 		var title = $("#titleInput").val();
 		var content = $("#redactor_content").val();				
 		var id = $("#postId").val();
+		var photoPostId = {};
 
 		if (title && content) {
 			if (id == "" ) { 
@@ -34,23 +35,20 @@
 					'/posts/create',
 					{title: title, content: content},
 					function(res) {
-						id = res.thepost.id;
+						photoPostId = res.thepost.id;
 						alert(res.thepost.id);
-
-
-						
 					}
-				).done(function(res) {
+				);
+
 				if (photos.length > 0) {
 							$.post(
 								'/photos/create',
-								{postId: id, photos: photos},
+								{postId: photoPostId, photos: photos},
 								function(res) {
 									alert("photos added!");
 								}
 							);
 						}	
-				});
 
 				
 			}
@@ -77,6 +75,7 @@
 
 			imageUploadCallback: function(image, json) {
 				photos[photos.length] = json.filelink;
+				console.log("photo in callback: " + image);
 				
 			}
 		});

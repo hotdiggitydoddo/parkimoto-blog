@@ -19,6 +19,7 @@ module.exports = {
 		photos.forEach(function(photo) {
 			Photo.create( {postId: id, filename: photo} ).done(function(err, p) {
 				if (err) {
+					console.log(err);
        				res.set('error', 'DB Error');
         			res.send(500, { error: 'DB Error'});
         		}

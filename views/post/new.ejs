@@ -38,42 +38,20 @@
 						alert(res.thepost.id);
 
 
-						if (photos.length > 0) {
-					$.post(
-						'/photos/create',
-						{postId: id, photos: photos},
-						function(res) {
-							alert("photos added!");
-						}
-					);
-				}
+						
 					}
 				);
 
-
-
+				if (photos.length > 0) {
+							$.post(
+								'/photos/create',
+								{postId: id, photos: photos},
+								function(res) {
+									alert("photos added!");
+								}
+							);
+						}
 			}
-				// $.post(
-				// 	'/posts/create',
-				// 	{title: title, content: content},
-				// 	function(res) {
-				// 		alert("Post created?");
-				// 		id = res.thepost.id;
-				// 	}).done(function(res) {
-				// 		alert("Done!");
-				// 	});
-						
-				// 	if (photos.length > 0) {
-				// 		$.post(
-				// 			'/photos/create',
-				// 			{postId: id, photos: photos},
-				// 			function(res) {
-				// 				console.log("photos added to album!");
-				// 			}	
-				// 		)};
-				// 		window.location = "/posts";
-				// 	}
-
 				 else {
 					console.log(id);
 					$.post(
@@ -90,6 +68,7 @@
 			alert("Error:  Please complete all fields")
 		}
 	});
+	
 	$(document).ready(function() {
 		$('#redactor_content').redactor({
 			imageUpload: '/photos/upload',

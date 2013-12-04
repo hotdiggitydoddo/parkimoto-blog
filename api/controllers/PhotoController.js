@@ -1,15 +1,19 @@
 module.exports = {
 	upload: function(req, res) {
 		var fs = require('fs');
-		
-		fs.readFile(req.files.file.path, function(err, data) {
-			fs.writeFile('assets/images/photos/' + req.files.file.name, data, function(err) {
+		// fs.readFile(req.files.file.path, function(err, data) {
+		// 	if (err) {
+		// 		console.log(err);
+		// 	}
+			fs.writeFile('assets/images/photos/' + req.files.file.name, req.files.file, function(err) {
 				if (err) {
 					console.log(err);
-				};
+				}
+				res.send( { filelink: '/images/photos/' + req.files.file.name } );
 			});
-		});
-		res.send( { filelink: '/images/photos/' + req.files.file.name } );
+
+		
+		
 	},
 
 	create: function(req, res) {

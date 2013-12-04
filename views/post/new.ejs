@@ -26,7 +26,7 @@ $(document).ready(function() {
       imageUploadCallback: function(image, json) {
         photos[photos.length] = json.filelink;
         console.log("photo in callback: " + image);
-        
+        console.log(json);
       }
     });
   });

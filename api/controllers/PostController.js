@@ -110,6 +110,10 @@ module.exports = {
               if (err) {
                 console.log(err);
               }
+              fs.unlink(".tmp/public/" + photo.filename, function(err) {
+              if (err) {
+                console.log(err);
+              }
             });
           
             photo.destroy(function(err) {

@@ -1,12 +1,12 @@
 module.exports = {
 	upload: function(req, res) {
 		var mv = require('mv');
-		mv(req.files.file.path, 'assets/images/photos/' + req.files.file.name, function(err) {
+		mv(req.files.file.path, 'assets/images' + req.files.file.name, function(err) {
 				console.log(err);
 				console.log(req.files.file);
 
 			});
-				res.send( { filelink: '/images/photos/' + req.files.file.name } );
+				res.send( { filelink: '/images/' + req.files.file.name } );
 
 
 

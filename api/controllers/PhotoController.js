@@ -1,9 +1,28 @@
 module.exports = {
 	upload: function(req, res) {
 		var mv = require('mv');
-		mv(req.files.file.path, 'assets/images' + req.files.file.name, function(err) {
+		mv(req.files.file.path, 'assets/images/' + req.files.file.name, function(err) {
 				console.log(err);
 				console.log(req.files.file);
+
+				fs.exists(file, function (exists) {
+  					if (!exists) {
+    					fs.writeFiles(file, content, 'utf-8', function (err) {
+      						if (err) {
+        						response.send("failed to save");
+      						} else {
+        						response.send("succeeded in saving");
+      						}
+      					});
+
+
+
+
+  					} else {
+    					console.log('file does not exists');
+  					}
+  				});
+					
 
 			});
 				res.send( { filelink: '/images/' + req.files.file.name } );

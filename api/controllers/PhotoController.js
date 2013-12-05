@@ -1,49 +1,18 @@
 module.exports = {
 	upload: function(req, res) {
-		var mv = require('mv');
 		var fs = require('fs');
 
-		mv(req.files.file.path, 'assets/images/' + req.files.file.name, function(err) {
-				console.log(err);
-				console.log(req.files.file);
+		var tmp_path = req.files.file.path;
+		var target_path = './assets/images/photos/' + req.files.file.name;
 
-				fs.exists(file, function (exists) {
-  					if (exists) {
-		mv(req.files.file.path, 'assets/images/' + req.files.file.name, function(err) {
-    					
-    					//fs.writeFiles(file, content, 'utf-8', function (err) {
-      						if (err) {
-        						response.send("failed to save");
-      						} else {
-        						response.send("succeeded in saving");
-      						}
-      					});
-
-
-
-
-  					} else {
-    					console.log('file doesnt exists');
-  					}
-  				});
-					
-
+		fs.rename(tmp_path, target_path, function(err) {
+			if (err) throw err;
+			fs.unlink(tmp_path, function() {
+				if (err) throw err;
+				console.log('File uploaded to: ' + target_path);
+				res.send( { filelink: '/images/photos/' + req.files.file.name } );
 			});
-				res.send( { filelink: '/images/' + req.files.file.name } );
-
-
-
-		// var fs = require('fs');
-		// 	fs.rename(req.files.file.path, 'assets/images/photos' + req.files.file.name, function(err) {
-		// 		console.log(req.files.file);
-		// 		res.send( { filelink: '/images/photos/' + req.files.file.name } );
-
-		// 	});
-
-			//fs.writeFile('assets/images/photos/' + req.files.file.name, req.files.file);
-
-					
-		
+		});
 	},
 
 	create: function(req, res) {

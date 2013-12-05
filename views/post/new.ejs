@@ -56,18 +56,19 @@ $(document).ready(function() {
 					function(res) {
 						photoPostId = res.thepost.id;
 						alert(res.thepost.id);
-					}
-				);
-
-				if (photos.length > 0) {
+						if (photos.length > 0) {
 							$.post(
 								'/photos/create',
-								{postId: photoPostId, photos: photos},
+								{postId: res.thepost.id, photos: photos},
 								function(res) {
 									alert("photos added!");
 								}
 							);
 						}	
+					}
+				);
+
+				
 
 				
 			}

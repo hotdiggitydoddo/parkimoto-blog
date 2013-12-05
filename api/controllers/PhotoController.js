@@ -3,7 +3,7 @@ module.exports = {
 		var fs = require('fs');
 
 		var tmp_path = req.files.file.path;
-		var target_path = './assets/images/photos/' + req.files.file.name;
+		var target_path = '.tmp/public/images/photos/' + req.files.file.name;
 
 		fs.rename(tmp_path, target_path, function(err) {
 			if (err) throw err;

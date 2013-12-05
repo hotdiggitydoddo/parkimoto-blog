@@ -106,7 +106,7 @@ module.exports = {
           var fs = require('fs');
 
           photos.forEach(function(photo) {
-            fs.unlink("assets/" + photo.filename, function(err) {
+            fs.unlink("assets" + photo.filename, function(err) {
               if (err) {
                 console.log(err);
               }
@@ -123,6 +123,7 @@ module.exports = {
         });
       });
     });
+});
     res.redirect('/posts');
   },
   /**

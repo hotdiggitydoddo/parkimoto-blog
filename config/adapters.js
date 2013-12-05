@@ -16,7 +16,7 @@ module.exports.adapters = {
 
   // If you leave the adapter config unspecified 
   // in a model definition, 'default' will be used.
-  'default': 'disk',
+  'default': 'localPostgresqlDB',
 
   // Persistent adapter for DEVELOPMENT ONLY
   // (data is preserved when the server shuts down)
@@ -35,6 +35,15 @@ module.exports.adapters = {
     // so you don't inadvertently push it up if you're using version control
     password: 'YOUR_MYSQL_PASSWORD', 
     database: 'YOUR_MYSQL_DB'
+  },
+
+  localPostgresqlDB: {
+    module: 'sails-postgresql',
+    database: 'parkimotoDb',
+    host: 'localhost',
+    user: 'parkimoto',
+    password: 'ryan4lisa',
+    port: 5432
   },
 
   herokuPostgresqlDB: {

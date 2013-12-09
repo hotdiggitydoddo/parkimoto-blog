@@ -126,8 +126,28 @@ p {
 	border: 0px;
 	font-weight: bolder;
 	margin-bottom: 10px;
-	font-size: 12.5pt;
+	white-space: normal;
+	color: black;
+	font-size: 14pt;
 }
+
+@media (max-width: 768px) {
+  .btn-responsive {
+    padding:2px 4px;
+    font-size:80%;
+    line-height: 1;
+    border-radius:3px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .btn-responsive {
+    padding:4px 9px;
+    font-size:90%;
+    line-height: 1.2;
+  }
+}
+
 
 .mybttn {
 	width: 75px;

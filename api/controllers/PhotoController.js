@@ -13,7 +13,7 @@ module.exports = {
 			fs.unlink(tmp_path, function() {
 				if (err) throw err;
 				console.log('File uploaded to: ' + target_path);
-				res.send( { filelink: '/images/photos/' + name } );
+				res.send( { filelink: '/images/photos' + name } );
 			});
 		});
 	},

@@ -5,7 +5,7 @@ module.exports = {
 		var tmp_path = req.files.file.path;
 		var target_path = '.tmp/public/images/photos/' + req.files.file.name;
 
-		fs.rename(tmp_path, target_path, function(err) {
+		fs.copy(tmp_path, target_path, function(err) {
 			if (err) throw err;
 			fs.copy(target_path, 'assets/images/photos/' + req.files.file.name, function(err) { });
 			fs.unlink(tmp_path, function() {

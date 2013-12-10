@@ -1,5 +1,4 @@
-<div class="container">
-<div class="content form-signin pull-right" style="max-width: 85%; padding-top: 20px;">
+<div class="content form-signin" style="max-width: 85%; padding-top: 20px;">
 	<form id="newPostForm">
 	<div class="form-group">
 		<label for="titleInput">Title</label>
@@ -16,38 +15,31 @@
 </form>
 </div>
 	
-</div>
 
  <script type="text/javascript">
-$(document).ready(function() {
-    $('#redactor_content').redactor({
-      imageUpload: '/photos/upload',
+	$(document).ready(function() {
+    	$('#redactor_content').redactor({
+      		imageUpload: '/photos/upload',
 
-      imageUploadCallback: function(image, json) {
-        photos[photos.length] = json.filelink;
-        console.log("photo in callback: " + image);
-        console.log(json);
-      }
-    });
-  });
-    </script>
+      		imageUploadCallback: function(image, json) {
+        		photos[photos.length] = json.filelink;
+        		console.log("photo in callback: " + image);
+        		console.log(json);
+      		}
+    	});
+  	});
+</script>
 
 <script type="text/javascript">
-	
-
-
-
-
 	var photos = new Array();
 
 	document.getElementById('titleInput').focus();
-	$("#createPostButton").click(function() {
+	$("#createPostButton").click(function(event) {
 		event.preventDefault();
 		var title = $("#titleInput").val();
 		var content = $("#redactor_content").val();				
 		var id = $("#postId").val();
 		var photoPostId = {};
-
 		if (title && content) {
 			if (id == "" ) { 
 				$.post(
@@ -90,12 +82,6 @@ $(document).ready(function() {
 	
 	
 </script> 
-
-
-<script type="text/javascript">
-	
-</script>
-
 
 
 <script type='text/javascript'>

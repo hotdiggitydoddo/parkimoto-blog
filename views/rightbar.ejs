@@ -1,0 +1,9 @@
+<div>
+  <% if (!req.session.admin) { %>
+    <a href="/login"><img src="/images/heart.png" class="pull-right" width="20" height="20"></a>
+      
+  <% } else { %>
+    <a href="/logout"><img src="/images/x.png" class="pull-right" width="20" height="20"></a>
+    <a href="/posts/new"><img src="/images/pencil.png" class="pull-right" width="20" height="20"></a>
+  <% } %>
+</div>

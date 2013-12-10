@@ -3,15 +3,17 @@ module.exports = {
 		var fs = require('fs-extra');
 
 		var tmp_path = req.files.file.path;
-		var target_path = '.tmp/public/images/photos/' + req.files.file.name;
+		var name = tmp_path.substr(tmp_path.lastIndexOf('/', tmp_path.length));
+		console.log(name);
+		var target_path = '.tmp/public/images/photos' + name;
 
 		fs.copy(tmp_path, target_path, function(err) {
 			if (err) throw err;
-			fs.copy(target_path, 'assets/images/photos/' + req.files.file.name, function(err) { });
+			fs.copy(target_path, 'assets/images/photos' + name, function(err) { });
 			fs.unlink(tmp_path, function() {
 				if (err) throw err;
 				console.log('File uploaded to: ' + target_path);
-				res.send( { filelink: '/images/photos/' + req.files.file.name } );
+				res.send( { filelink: '/images/photos/' + name } );
 			});
 		});
 	},
